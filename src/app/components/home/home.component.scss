@@ -1,0 +1,213 @@
+.home   {
+    height: calc(100vh - 175px);
+}
+
+.home-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: true;
+    justify-content: center;
+    align-items: stretch;
+    object-fit: contain;
+    grid-template-areas: 
+        "side post post better-posts"
+        "side post post better-posts"
+        "side post post better-posts";
+}
+
+.side {
+    grid-area: side;
+}
+
+.post {
+    grid-area: post;
+    margin: 10px 20px;
+    border-radius: 10px;
+}
+
+.better-posts {
+    grid-area: better-posts;
+}
+
+.post-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-auto-columns: auto;
+    grid-auto-flow: auto;
+    justify-content: center;
+    align-items: stretch;
+    grid-template-areas: 
+        "title title title title title title title title"
+        "post post post post post post post post"
+        "like like date date date date date date"
+        "footer footer footer footer footer footer footer footer";
+}
+
+.header-post {
+    background: #1f4037;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #207597,  #08556D);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #207597, #08556D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: white;
+    grid-area: title;    
+    width: 100%;
+    display: grid;
+    max-height: 80px;
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-columns: auto;
+    grid-auto-flow: auto;
+    justify-content: center;
+    align-items: stretch;
+    border-top: 1px solid lightgrey;
+    border-bottom: 1px solid lightgrey;
+    grid-template-areas: 
+        "title title title title photo photo";
+}
+
+.photo-container {    
+    grid-area: photo;
+    text-align: end;
+    align-self: center;
+}
+
+.card-title {
+    grid-area: title;
+    margin-left: 15px;
+    align-self: center;
+}
+
+.post-body {
+    border-top: lightgrey solid 1px;
+    grid-area: post;
+    font-size: 20px;
+    padding: 10px;
+    text-align: justify;
+    font-family: sans-serif;
+}
+
+.post-like {
+    grid-area: like;
+    margin: 10px;
+}
+
+.post-date {
+    grid-area: date;
+    padding: 10px;
+    text-align: right;
+}
+
+.post-footer {
+    grid-area: footer;
+}
+
+.comment-separated {
+    margin-top: 10px;
+}
+
+.comment-history {
+    width: 100%;
+    display: grid;
+    max-height: 80px;
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-columns: auto;
+    grid-auto-flow: auto;
+    justify-content: center;
+    align-items: stretch;
+    border-top: 1px solid lightgrey;
+    border-bottom: 1px solid lightgrey;
+    grid-template-areas: 
+        "photo comment comment comment comment comment";
+
+    .profile-photo {
+        height: 50px;
+        width: 50px;
+        border-radius: 100px;
+        margin: 0;
+    }
+}
+
+.comment-photo {
+    grid-area: photo;
+    text-align: center;
+    border-right: 1px solid lightgrey;
+}
+
+.comment-register {
+    grid-area: comment;
+}
+
+.footer-comment-container{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-columns: auto;
+    grid-auto-flow: auto;
+    justify-content: center;
+    align-items: stretch;
+    padding: 10px;
+    grid-template-areas: 
+        "comment comment comment comment comment button";
+}
+
+.comment-footer { 
+    grid-area: comment;
+}
+
+.button-footer { 
+    grid-area: button;
+    align-self: center;
+}
+
+.text-area-comment {
+    max-height: 90px;
+}
+
+@media (max-width: 1100px) {
+    .home   {
+        height: 100vh;
+    }
+
+    .post {        
+        margin: 10px 0;
+    }
+
+    .home-container {
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-areas: 
+            "post";
+    }
+}
+
+.header-post {
+    padding: 10px;
+}
+
+.profile-photo {
+    border-radius: 50px;
+    max-width: 40px;
+    max-height: 40px;
+}
+
+.card-footer {
+    margin: 0;
+    padding: 0;
+}
+
+.card-profile {
+    width: 500px;
+}
+
+.container-profile {
+    text-align: -webkit-center;
+    margin-bottom: 10px;    
+}
+
+.card-img-top{
+    width: 150px;
+    align-self: center;
+}
+
+.button-footer-post {
+    align-self: flex-end;
+}

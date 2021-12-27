@@ -1,0 +1,76 @@
+<div class="home-container">
+    <div class="post">
+        <form action="">
+            <div class="container-profile">
+                <div class="card card-profile" *ngIf="profile != null">
+                    <img class="card-img-top" src="assets/images/Sin-foto.png">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ profile.userName }}</h5>
+                        <p class="card-text">{{ profile.email }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card post-container mb-5 mt-5" bg-info *ngIf="profile == null && appComponent.IsLogged">
+                <div class="header-post">
+                    <div class="card-title form-inline">
+                        Publicar un post
+                    </div>
+                </div>
+                <div class="card-text post-body text-center">
+                    <form class="footer-comment-container form-group" [formGroup]="postForm" (ngSubmit)="createPost()">
+                        <div class="comment-footer">                            
+                            <input type="text" formControlName="title" id="txtTitle" class="form-control text-area-comment" maxlength="50" rows="2" placeholder="Titulo"/>
+                            <br>
+                            <textarea id="txtPost" formControlName="content" class="form-control text-area-comment" maxlength="200" rows="2" placeholder="Escribe algo"></textarea>
+                        </div>
+                        <div class="button-footer-post text-end">
+                            <button class="btn btn-primary" [disabled]="postForm.invalid">
+                                <i class="fas fa-comment-alt"></i> Publicar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="card post-container mt-5" *ngIf="listOfPost.length == 0">
+                <div class="header-post">
+                    <div class="card-title form-inline">
+                        <h4>                        
+                            <strong>Sin publicaciones</strong>
+                        </h4>
+                    </div>
+                </div>
+                <div class="card-text post-body text-center">
+                    Aún no hay publicaciones de este usuario.
+                </div>
+            </div>
+            
+            <div class="card post-container mb-4"  *ngFor="let post of listOfPost">
+                <div class="header-post">
+                    <div class="container photo-container">
+                        <a class="navbar-brand" [href]="'/home/'+post.userId">
+                            <img class="profile-photo" src="assets/images/Sin-foto.png" alt="CamiloNova">
+                        </a>
+                        {{ post.userName }}
+                    </div>
+                    <div class="card-title form-inline">
+                        <small>#{{ post.idPost }} </small>             
+                        <h4>                        
+                            <strong>{{ post.title}}</strong>
+                        </h4>
+                    </div>
+                </div>
+                <div class="card-text post-body">
+                    {{ post.content }}
+                </div>
+                <p class="card-text post-date"><small class="text-muted">23 de diciembre a las 18:00</small></p>
+                <div class="card-footer post-footer">
+                    <div class="comment-separated">
+                        <app-comments [post]="post" [logged]="appComponent.IsLogged"></app-comments>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

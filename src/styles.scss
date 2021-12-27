@@ -1,1 +1,39 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    padding: 0%;
+    margin: 0%;    
+    background: #0F2027;
+    background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);
+    background: linear-gradient(to right, #2C5364, #203A43, #0F2027);   
+}
+
+header {
+    height: 80px;
+}
+
+.input-icon {
+    height: 100%;
+}
+
+.btn-block {
+    width: 100%;
+}
+
+.header-icon {
+    color: white;
+    font-size: 60px;
+    margin-top: 15%;
+}
+
+.content-icon {
+    background: silver;
+    border-radius: 62px;
+    height: 100px;
+    width: 100px;
+    text-align-last: center;
+    margin: 1% 40%;
+}
+
+.header-profile-photo {
+    width: 30px;
+    border-radius: 50px;
+}

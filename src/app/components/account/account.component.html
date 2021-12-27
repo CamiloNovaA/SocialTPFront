@@ -1,0 +1,103 @@
+<div class="account-container">    
+    <a class="navbar-brand photo-container">
+        <img class="profile-photo" src="assets/images/Sin-foto.png" alt="CamiloNova">
+    </a>
+    <div class="account">
+        <form [formGroup]="accountForm" (ngSubmit)="updateAccount()">
+            <div class="card info-account-container">                
+                <h4 class="card-title">Información de cuenta</h4>
+                <div class="card-text info-account-body">
+                    <div class="form-group mb-3 mt-3">
+                        <div class="input-group">
+                            <div class="col-2 offset-md-3 text-center">
+                                Usuario                                    
+                            </div>
+                            <div class="col-4">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" maxlength="50" formControlName="userName" placeholder="Usuario">
+                                    <div class="input-group-prepend">
+                                        <div [class.valid-icon]="this.accountForm.get('userName').valid" [class.invalid-icon]="this.accountForm.get('userName').invalid && this.accountForm.get('userName').touched"
+                                        class="input-group-text bg-white input-icon" >
+                                            <i class="fas fa-user-circle"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <div class="input-group">
+                            <div class="col-2 offset-md-3 text-center">
+                                Correo
+                            </div>
+                            <div class="col-4">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" formControlName="email" maxlength="200" placeholder="Correo">
+                                    <div class="input-group-prepend">
+                                        <div [class.valid-icon]="this.accountForm.get('email').valid" [class.invalid-icon]="this.accountForm.get('email').invalid && this.accountForm.get('email').touched"
+                                        class="input-group-text bg-white input-icon">
+                                            <i class="fas fa-at"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mb-3" [hidden]="unableEdit">
+                        <div class="input-group">
+                            <div class="col-sm-6 col-md-3 offset-md-2 text-center">
+                                Nueva contraseña
+                            </div>
+                            <div class="col-sm-6 col-md-4 offset-col-1">
+                                <div class="input-group">
+                                    <input type="password" class="form-control" autocomplete="on" maxlength="20" formControlName="password" placeholder="Nueva contraseña">
+                                    <div class="input-group-append">
+                                        <div [class.valid-icon]="this.accountForm.get('password').valid" [class.invalid-icon]="this.accountForm.get('password').invalid && this.accountForm.get('password').touched"
+                                        class="input-group-text bg-white input-icon">
+                                            <i class="fas fa-key"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mb-3" [hidden]="unableEdit">
+                        <div class="input-group">
+                            <div class="col-sm-6 col-md-3 offset-md-2 text-center">
+                                Confirmar contraseña
+                            </div>
+                            <div class="col-sm-6 col-md-4 offset-col-1">
+                                <div class="input-group">
+                                    <input type="password" class="form-control" autocomplete="on" maxlength="20" formControlName="newPassword" placeholder="Confirmar contraseña">
+                                    <div class="input-group-append">
+                                        <div [class.valid-icon]="this.accountForm.get('newPassword').valid" [class.invalid-icon]="this.accountForm.get('newPassword').invalid && this.accountForm.get('newPassword').touched"
+                                        class="input-group-text bg-white input-icon">
+                                            <i class="fas fa-key"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mb-3" [hidden]="unableEdit">
+                        <div class="input-group">
+                            <div class="custom-file col-2 offset-md-3 text-center">
+                                <label class="custom-file-label" for="inputGroupFile02">Foto de perfil</label>
+                            </div>
+                            <div class="input-group-append col-4">
+                                <input type="file" formControlName="profilePhoto" (change)="onFileSelected($event)" class="custom-file-input input-insert-photo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer info-account-footer">
+                    <div>
+                        <button type="button" [hidden]="!unableEdit" class="btn btn-warning col-md-4 offset-md-4" (click)="enableInputs()">Editar informacion de cuenta</button>
+                        <button type="submit" [hidden]="unableEdit" class="btn btn-danger col-md-3 offset-md-2" [disabled]="accountForm.invalid">Guardar cambios</button>
+                        <button type="button" [hidden]="unableEdit" class="btn btn-danger col-md-3 offset-md-2" (click)="disableInputs()">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

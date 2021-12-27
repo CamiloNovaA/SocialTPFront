@@ -1,0 +1,56 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light border-3 border-bottom border-secundary">
+    <div class="container-fluid">
+        <div class="row col-12">
+            <div class="col-4">
+                <a class="navbar-brand" routerLink="/home">
+                    <img src="assets/images/LogoTeleperformance.png" width="250" alt="SocialTP">
+                </a>
+                <button type="button" class="navbar-toggler" [routerLink]="['/home', idUser]" data-bs-toggle="collapse" data-bs-target="#MenuNavegacion">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            <div class="col-8">
+                <div id="MenuNavegacion" class="collapse navbar-collapse">
+                    <ul class="navbar-nav col-6 offset-md-6">
+                        <div class="col-12" *ngIf="appComponent.IsLogged">
+                            <li class="nav-item dropdown col-8 offset-md-4">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <img class="header-profile-photo" src="assets/images/Sin-foto.png" alt="CamiloNova">
+                                    {{ userName }}
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" routerLink="/home">Inicio</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" routerLink="account">Mi cuenta</a>
+                                    <a class="dropdown-item" [routerLink]="['/home', idUser]">Mis posts</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" (click)="SignOut()">Cerrar sesión</a>
+                                </div>
+                            </li>
+                        </div>
+                        <div class="col-12 text-end" *ngIf="!appComponent.IsLogged">
+                            <a data-toggle="modal" data-target="#register" class="btn btn-success">
+                                <i class="fas fa-user-plus"></i>
+                                Registrarse
+                            </a>
+                            <a data-toggle="modal" data-target="#login" class="btn btn-primary offset-md-1">
+                                <i class="fas fa-user"></i>
+                                Iniciar sesión
+                            </a>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>    
+</nav>
+  
+<div class="modal fade" id="register" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <app-register></app-register>
+        </div>
+    </div>
+</div>
+  
+<app-login></app-login>

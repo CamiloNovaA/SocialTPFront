@@ -1,0 +1,27 @@
+<div class="content-fluid comment-history" *ngFor="let comment of listOfComments">
+    <div class="row mb-2">
+        <div class="text-end col-1">
+            <a class="navbar-brand comment-photo" href="#">
+                <img class="profile-photo" src="assets/images/Sin-foto.png" alt="CamiloNova">
+            </a>
+        </div>
+        <div class="col-11">
+            <div class="col-auto comment-register">
+                <div class="comment-text">
+                    <h6 class="not-margin">{{ comment.userName }}</h6>
+                    <hr class="m-0">
+                    <p class="not-margin">{{ comment.content }}</p>
+                </div>                
+            </div>            
+        </div>
+    </div>
+</div>
+<hr class="m-0">
+<form class="form-inline footer-comment-container" [formGroup]="commentForm" (ngSubmit)="addComment(post.idPost)" *ngIf="logged">
+    <div class="form-group mb-2 comment-footer">
+        <textarea formControlName="content" class="form-control text-area-comment" maxlength="200" rows="2" placeholder="Escribe tu comentario"></textarea>        
+    </div>
+    <button class="btn btn-primary button" [disabled]="commentForm.invalid">
+        <i class="fas fa-comment-alt"></i> Comentar
+    </button>
+</form>

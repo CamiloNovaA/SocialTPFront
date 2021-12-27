@@ -1,0 +1,57 @@
+<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="LoginLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header container-fluid">
+                <div class="col-12">
+                    <h5 class="modal-title text-center">Iniciar sesión</h5>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="bg-blue content-icon mb-3">
+                    <i class="fas fa-user-alt header-icon"></i>
+                </div>
+                <form [formGroup]="accountForm" (ngSubmit)="login(accountForm)">
+                    <div class="alert alert-danger mb-3" *ngIf="invalidLogin">Contraseña o usuario invalido</div>
+                    <div class="form-group mb-3">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div [class.valid-icon]="this.accountForm.get('userName').valid" [class.invalid-icon]="this.accountForm.get('userName').invalid && this.accountForm.get('userName').touched"
+                                class="input-group-text bg-white input-icon" >
+                                    <i class="fas fa-user-circle"></i>
+                                </div>
+                            </div>
+                            <input maxlength="50" name="userName" formControlName="userName" type="text" class="form-control" placeholder="Usuario">
+                        </div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <div class="input-group">
+                            <div class="input-group-append">
+                                <div [class.valid-icon]="this.accountForm.get('password').valid" [class.invalid-icon]="this.accountForm.get('password').invalid && this.accountForm.get('password').touched"
+                                class="input-group-text bg-white input-icon">
+                                    <i class="fas fa-key"></i>
+                                </div>
+                            </div>
+                            <input type="password" id="password" maxlength="20" name="password" formControlName="password" class="form-control" autocomplete="on" placeholder="Contraseña" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="form-check">
+                                <input class="form-check-input" (click)="ShowPassword()" type="checkbox">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    Ver contraseña
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <button type="submit" class="btn btn-success btn-block text-center" [disabled]="accountForm.invalid">Iniciar sesión</button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button #closebutton type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
